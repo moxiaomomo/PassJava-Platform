@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PassJava-Platform.iml" filepath="$PROJECT_DIR$/PassJava-Platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/passjava-content/passjava-content.iml" filepath="$PROJECT_DIR$/passjava-content/passjava-content.iml" />
+    </modules>
+  </component>
+</project>
