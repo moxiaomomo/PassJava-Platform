@@ -6,10 +6,11 @@
     <artifactId>passjava</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>passjava</name>
-    <description>佳必过-聚合服务</description>
+    <description>passjava service demo</description>
     <packaging>pom</packaging>
 
     <modules>
         <module>passjava-content</module>
+        <module>chat</module>
     </modules>
 </project>
