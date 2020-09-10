@@ -1,6 +1,6 @@
-package com.moxiaomomo.chat.socket;
+package com.xbyy.gamechat.socket;
 
-import com.moxiaomomo.chat.dao.ChatRedisDao;
+import com.xbyy.gamechat.dao.ChatRedisDao;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
@@ -41,7 +41,7 @@ public class ChatWebSocket {
             logger.info("Authentication failed!");
             session.close();
         }
-        logger.info("pathMap: " + String.valueOf(pathMap));
+        logger.debug("pathMap: " + String.valueOf(pathMap));
     }
 
     @OnOpen
@@ -92,17 +92,14 @@ public class ChatWebSocket {
             return;
         }
         for (Session tmpSession : rooms.get(roomID)) {
-            logger.info("to send message to " + tmpSession.id().toString());
+            logger.debug("to send message to " + tmpSession.id().toString());
             tmpSession.sendText(message);
         }
     }
 
     @OnBinary
     public void onBinary(Session session, byte[] bytes) {
-//        for (byte b : bytes) {
-//            System.out.println(b);
-//        }
-        logger.info(String.valueOf(bytes));
+        logger.debug(String.valueOf(bytes));
 //        session.sendBinary(bytes);
         String roomID = session2room.get(session.id().toString());
         if (roomID == null) {
@@ -153,7 +150,7 @@ public class ChatWebSocket {
 
     public void handleRedisMessage(Message message, byte[] pattern) {
         String body = new String(message.getBody());
-        logger.info(body);
+        logger.debug(body);
 
         JSONObject  jsonObject = JSONObject.parseObject(body);
         String roomID = (String)jsonObject.get("room");

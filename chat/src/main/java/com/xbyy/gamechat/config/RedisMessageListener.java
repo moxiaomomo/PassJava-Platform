@@ -1,6 +1,6 @@
-package com.moxiaomomo.chat.config;
+package com.xbyy.gamechat.config;
 
-import com.moxiaomomo.chat.socket.ChatWebSocket;
+import com.xbyy.gamechat.socket.ChatWebSocket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
@@ -13,6 +13,7 @@ public class RedisMessageListener implements MessageListener {
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
+        // 接收并处理redis发布的信息
         chatSocket.handleRedisMessage(message, pattern);
     }
 }

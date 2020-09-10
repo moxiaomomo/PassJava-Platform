@@ -1,6 +1,6 @@
-package com.moxiaomomo.chat.dao.impl;
+package com.xbyy.gamechat.dao.impl;
 
-import com.moxiaomomo.chat.dao.ChatRedisDao;
+import com.xbyy.gamechat.dao.ChatRedisDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;

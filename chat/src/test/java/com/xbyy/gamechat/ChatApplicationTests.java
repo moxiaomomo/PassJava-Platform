@@ -1,4 +1,4 @@
-package com.moxiaomomo.chat;
+package com.xbyy.gamechat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

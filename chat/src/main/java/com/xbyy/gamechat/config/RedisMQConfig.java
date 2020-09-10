@@ -1,4 +1,4 @@
-package com.moxiaomomo.chat.config;
+package com.xbyy.gamechat.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -12,7 +12,7 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
 @Configuration
 @EnableCaching
-public class RedisCacheConfig {
+public class RedisMQConfig {
     @Value("${redis.chat.topic}")
     public String redisChatTopic;
 
@@ -22,14 +22,14 @@ public class RedisCacheConfig {
 
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        // 可以添加多个 messageListener，配置不同的交换机
+        // 可以添加多个 messageListener，用以配置不同的交换机
         container.addMessageListener(listenerAdapter, new PatternTopic(redisChatTopic));
         return container;
     }
 
     @Bean
     MessageListenerAdapter listenerAdapter(RedisMessageListener receiver) {
-        // System.out.println("消息适配器1");
+        // 其中一个消息适配器
         return new MessageListenerAdapter(receiver, "onMessage");
     }
 

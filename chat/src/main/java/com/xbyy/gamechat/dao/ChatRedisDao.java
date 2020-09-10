@@ -1,6 +1,4 @@
-package com.moxiaomomo.chat.dao;
-
-import org.springframework.beans.factory.annotation.Value;
+package com.xbyy.gamechat.dao;
 
 public interface ChatRedisDao {
 //    public static final String gameChatChannel ="gameChat_Channel";
