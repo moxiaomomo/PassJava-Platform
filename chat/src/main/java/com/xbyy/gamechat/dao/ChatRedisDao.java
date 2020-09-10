@@ -6,9 +6,8 @@ public interface ChatRedisDao {
 
     /**
      *
-     * Description : send game chat message <br>
-     * Create Time: 2020年9月9日 <br>
-     * Create by : xxx <br>
+     * Description : send game chat message
+     * Create Time: 2020年9月9日
      *
      * @param channel
      * @param message

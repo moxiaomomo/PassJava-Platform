@@ -27,7 +27,7 @@ public class RoomInfoToRedis {
     /**
      * 描述阶段的票数
      */
-    private Integer descSupportCount;
+    private Integer descVoteCount;
 
     /**
      * 当前描述的位置(玩家序号)

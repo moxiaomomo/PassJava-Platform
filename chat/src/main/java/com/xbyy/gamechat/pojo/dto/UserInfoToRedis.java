@@ -39,6 +39,4 @@ public class UserInfoToRedis implements Serializable {
     private String mobile;
     //头像
     private String avatarUrl;
-    //微信Id
-    private String wxOpenid;
 }
