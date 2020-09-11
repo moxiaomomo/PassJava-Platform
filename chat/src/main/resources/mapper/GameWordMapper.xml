@@ -23,14 +23,14 @@
 
     <!--自定义关联查询-->
     <!-- 表名 -->
-    <sql id="t_name">bus_word</sql>
+    <sql id="t_name">sswd_word</sql>
     <!-- 别名 -->
-    <sql id="t_alias">bus_word as word</sql>
+    <sql id="t_alias">sswd_word as word</sql>
     <!--外键表关联定义 -->
     <sql id="join"></sql>
 
     <insert id="batchSaveWordAndUpdate" parameterType="java.util.List">
-        REPLACE INTO bus_word ( id, pm_word, wd_word, status, create_user, create_time, update_user, update_time, syn_status )
+        REPLACE INTO tbl_sswd_word ( id, pm_word, wd_word, status, create_user, create_time, update_user, update_time, syn_status )
         VALUES
         <foreach collection="wordList"  separator="," item="word" >
             (
