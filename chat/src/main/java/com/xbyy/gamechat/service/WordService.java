@@ -1,5 +1,7 @@
 package com.xbyy.gamechat.service;
 
+import com.xbyy.gamechat.utils.ResultBody;
+
 public interface WordService {
-    String queryNewWord(String roomId);
+    ResultBody queryNewWord(String roomId);
 }
