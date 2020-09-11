@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xbyy.gamechat.mapper.GameWordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xbyy.gamechat.pojo.entity.SSWDWord">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="pm_word" property="pmWord" />
+        <result column="wd_word" property="wdWord" />
+        <result column="status" property="status" />
+        <result column="create_user" property="createUser" />
+        <result column="update_user" property="updateUser" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        create_time,
+        update_time,
+        id, pm_word, wd_word, status, create_user, update_user
+    </sql>
+
+    <!--自定义关联查询-->
+    <!-- 表名 -->
+    <sql id="t_name">bus_word</sql>
+    <!-- 别名 -->
+    <sql id="t_alias">bus_word as word</sql>
+    <!--外键表关联定义 -->
+    <sql id="join"></sql>
+
+    <insert id="batchSaveWordAndUpdate" parameterType="java.util.List">
+        REPLACE INTO bus_word ( id, pm_word, wd_word, status, create_user, create_time, update_user, update_time, syn_status )
+        VALUES
+        <foreach collection="wordList"  separator="," item="word" >
+            (
+            #{word.id},
+            #{word.pmWord},
+            #{word.wdWord},
+            #{word.status},
+            #{word.createUser},
+            #{word.createTime},
+            #{word.updateUser},
+            #{word.updateTime},
+            #{word.synStatus}
+            )
+        </foreach>
+    </insert>
+</mapper>

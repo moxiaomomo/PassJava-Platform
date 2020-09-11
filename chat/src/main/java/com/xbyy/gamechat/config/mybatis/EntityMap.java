@@ -1,4 +1,4 @@
-package com.xbyy.gamechat.config;
+package com.xbyy.gamechat.config.mybatis;
 
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 
