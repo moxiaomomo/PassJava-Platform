@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- *  服务实现类
+ *  Service sswd word service
  *
  * @author moguang
  * @date 2020-09-11

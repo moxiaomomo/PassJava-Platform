@@ -11,7 +11,7 @@ public interface SSWDRoomService {
 
     public void joinRoom(String senderId, String roomId, Session session);
 
-    public void existRoom(Session curSession);
+    public void exitRoom(Session curSession);
 
     public void notifyPlayerDesc(String senderId, String roomId, String position,
                           String voteCount);
@@ -19,4 +19,6 @@ public interface SSWDRoomService {
     public void startVote(String curPosition, String roomId, String votePosition);
 
     public void findNeedVotePlayer(String senderId, String roomId, String position);
+
+    public void findNeedDescPlayer(String senderId, String roomId, String position);
 }
