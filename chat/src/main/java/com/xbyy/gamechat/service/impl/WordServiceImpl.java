@@ -21,9 +21,9 @@ import java.util.List;
  * @author moguang
  * @date 2020-09-11
  */
-@Slf4j
 @Service
 @Transactional(rollbackFor = Exception.class)
+@Slf4j
 public class WordServiceImpl extends BaseServiceImpl<GameWordMapper, SSWDWord> implements WordService {
     @Autowired
     private RedisGameUtils redisGameUtils;
