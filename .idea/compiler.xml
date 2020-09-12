@@ -8,17 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="chat" />
+        <module name="game" />
         <module name="passjava-content" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat" target="1.8" />
-      <module name="passjava-content" target="1.5" />
+      <module name="game" target="1.8" />
+      <module name="passjava-content" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chat" options="-parameters" />
+      <module name="game" options="-parameters" />
       <module name="passjava-content" options="-parameters" />
     </option>
   </component>

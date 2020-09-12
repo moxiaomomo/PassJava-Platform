@@ -11,6 +11,6 @@
 
     <modules>
         <module>passjava-content</module>
-        <module>chat</module>
+        <module>xbyygame</module>
     </modules>
 </project>

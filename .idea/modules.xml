@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PassJava-Platform.iml" filepath="$PROJECT_DIR$/PassJava-Platform.iml" />
-      <module fileurl="file://$PROJECT_DIR$/chat/chat.iml" filepath="$PROJECT_DIR$/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xbyygame/chat.iml" filepath="$PROJECT_DIR$/xbyygame/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xbyygame/game.iml" filepath="$PROJECT_DIR$/xbyygame/game.iml" />
       <module fileurl="file://$PROJECT_DIR$/passjava-content/passjava-content.iml" filepath="$PROJECT_DIR$/passjava-content/passjava-content.iml" />
     </modules>
   </component>
