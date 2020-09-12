@@ -20,5 +20,7 @@ public interface GameWordMapper extends GameBaseMapper<SSWDWord> {
      * @return
      */
     boolean batchSaveWordAndUpdate(@Param("wordList") List<SSWDWord> busWordList);
+
+    List<SSWDWord> queryAll();
 }
 

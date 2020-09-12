@@ -30,7 +30,7 @@
     <sql id="join"></sql>
 
     <insert id="batchSaveWordAndUpdate" parameterType="java.util.List">
-        REPLACE INTO tbl_sswd_word ( id, pm_word, wd_word, status, create_user, create_time, update_user, update_time, syn_status )
+        REPLACE INTO sswd_word ( id, pm_word, wd_word, status, create_user, create_time, update_user, update_time, syn_status )
         VALUES
         <foreach collection="wordList"  separator="," item="word" >
             (
@@ -46,4 +46,11 @@
             )
         </foreach>
     </insert>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sswd_word
+    </select>
+
 </mapper>

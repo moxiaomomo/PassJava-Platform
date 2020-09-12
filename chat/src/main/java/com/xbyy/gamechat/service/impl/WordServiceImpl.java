@@ -46,13 +46,14 @@ public class WordServiceImpl extends BaseServiceImpl<GameWordMapper, SSWDWord> i
             if(null != object){
                 return ResultBody.ok().msg(object.toString());
             } else {
-                QueryWrapper<SSWDWord> queryWrapper = new QueryWrapper<>();
-                queryWrapper.lambda()
-                        .eq(SSWDWord::getSynStatus, 1);
-                List<SSWDWord> sswds = wordMapper.selectList(queryWrapper);
+//                QueryWrapper<SSWDWord> queryWrapper = new QueryWrapper<>();
+//                queryWrapper.lambda()
+//                        .eq(SSWDWord::getSynStatus, 1);
+//                List<SSWDWord> sswds = wordMapper.selectList(queryWrapper);
+                List<SSWDWord> sswds = wordMapper.queryAll();
                 if(sswds != null && sswds.size()>0){
                     log.info("db查询获取到的词汇cnt:{}", sswds.size());
-                    return ResultBody.ok().msg(JSON.toJSONString(sswds.get(0)));
+                    return ResultBody.ok().data(JSON.toJSONString(sswds.get(0)));
                 }
             }
         }catch (Exception e){
