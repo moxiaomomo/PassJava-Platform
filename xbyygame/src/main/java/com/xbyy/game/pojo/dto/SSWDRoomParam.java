@@ -1,10 +1,11 @@
 package com.xbyy.game.pojo.dto;
 
+import com.xbyy.game.enums.GameModeEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Description sswd room ey params
+ * @Description sswd room params
  * @Author moguang
  * @Date 2020/9/12
  **/
@@ -18,13 +19,13 @@ public class SSWDRoomParam {
     // 观众人数
     private Integer viewerNum;
     // 白板规则 (游戏模式1)
-    private Integer blankRule;
+    private Integer bbRule;
     // 选词规则
     private Integer wordGenRule;
     // roomId
     private String roomId;
-    // 游戏模式 0-谁是卧底 1-白板卧底
-    private Integer roomType;
     // 房间类型 0-语音版 1-文字版
     private Integer roomFlag;
+    // 游戏模式 0-谁是卧底 1-白板卧底
+    private GameModeEnum gameMode;
 }

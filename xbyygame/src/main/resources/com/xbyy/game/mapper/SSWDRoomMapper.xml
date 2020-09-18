@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xbyy.game.mapper.SSWDRoomMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xbyy.game.pojo.entity.GameRoom">
+        <id column="id" property="id" />
+        <result column="room_id" property="roomId" />
+        <result column="status" property="state" />
+        <result column="create_user" property="createUser" />
+        <result column="update_user" property="updateUser" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="mode" property="mode" />
+        <result column="flag" property="flag" />
+        <result column="player_num" property="playerNum" />
+        <result column="wd_num" property="wdNum" />
+        <result column="viewer_num" property="viewerNum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, room_id, status, create_user, update_user, create_time, update_time,
+        mode, flag, player_num, wd_num, viewer_num
+    </sql>
+
+    <!--自定义关联查询-->
+    <!-- 表名 -->
+    <sql id="t_name">sswd_room</sql>
+    <!-- 别名 -->
+    <sql id="t_alias">sswd_room as room</sql>
+    <!--外键表关联定义 -->
+    <sql id="join"></sql>
+
+    <select id="getRoom" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sswd_room where room_id=#{roomId}
+    </select>
+
+</mapper>

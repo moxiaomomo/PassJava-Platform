@@ -1,5 +1,8 @@
 package com.xbyy.game.pojo.vo;
 
+import com.xbyy.game.enums.RoleConnStateEnum;
+import com.xbyy.game.enums.RoleStateEnum;
+import com.xbyy.game.enums.RoleTypeEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -37,27 +40,17 @@ public class RoomMemberVo implements Serializable {
     /**
      * 状态 1-正常 2-淘汰
      */
-    private Integer roleState;
-
-    /**
-     * 状态 中文说明
-     */
-    private String roleStateStr;
+    private RoleStateEnum roleState;
 
     /**
      * 在线状态 1-正常 2-离开
      */
-    private Integer onlineStatus;
-
-    /**
-     * 在线状态 1-正常 2-离开
-     */
-    private String onlineStatusStr;
+    private RoleConnStateEnum connState;
 
     /**
      * 类型 1-平民 2-卧底 3-白板(卧底)
      */
-    private Integer type;
+    private RoleTypeEnum type;
 
     /**
      * 类型 中文说明
@@ -70,12 +63,12 @@ public class RoomMemberVo implements Serializable {
     private String word;
 
     /**
-     * 投票次数
+     * 投票给了哪个位置的玩家，若没投票则为0
      */
-    private Integer voteCount;
+    private Integer voteTo;
 
     /**
-     * 投票人集合
+     * 投票人集合(被哪些人投票了)
      */
     private List<VoteMemberVo> voteMembers;
 }

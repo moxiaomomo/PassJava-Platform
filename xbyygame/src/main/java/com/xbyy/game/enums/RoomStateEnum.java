@@ -1,16 +1,9 @@
 package com.xbyy.game.enums;
 
-/**
- * @Description 房间状态  游戏状态 1-准备阶段 2-发言阶段 3-投票阶段 4-游戏结束
- * @Author moguang
- * @Date 2020/09/10
- **/
 public enum RoomStateEnum {
-
-    READY(1, "准备中"),
-    DESC(2, "发言中"),
-    SUPPORT(3, "投票中"),
-    GAME_OVER(4, "游戏结束");
+    NORMAL(0, "正常"),
+    CLOSED(1, "关闭"),
+    BANNED(2, "禁用");
 
     private Integer status;
     private String message;
@@ -19,8 +12,8 @@ public enum RoomStateEnum {
         return status;
     }
 
-    public void setState(Integer state) {
-        this.status = state;
+    public void setState(Integer status) {
+        this.status = status;
     }
 
     public String getMessage() {
@@ -37,12 +30,11 @@ public enum RoomStateEnum {
     }
 
     public static String getMsgByType(Integer type) {
-        for (RoomStateEnum operType : RoomStateEnum.values()) {
-            if (operType.getState().equals(type)) {
-                return operType.getMessage();
+        for (RoleStateEnum state : RoleStateEnum.values()) {
+            if (state.getState().equals(type)) {
+                return state.getMessage();
             }
         }
         return null;
     }
 }
-

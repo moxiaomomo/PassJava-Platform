@@ -1,16 +1,8 @@
 package com.xbyy.game.enums;
 
-/**
- * @Description 房间角色类型
- * @Author moguang
- * @Date 2020/09/10
- **/
-public enum RoleTypeEnum {
-    UK(0, "未知"),
-    PM(1, "平民"),
-    WD(2, "卧底"),
-    BWD(3, "白板卧底"),
-    VIEWER(4, "观众");
+public enum GameFlagEnum {
+    VOICE(0, "语音模式"), // default
+    TEXT(1, "文字模式");
 
     private Integer type;
     private String message;
@@ -31,13 +23,13 @@ public enum RoleTypeEnum {
         this.message = message;
     }
 
-    private RoleTypeEnum(Integer type, String message) {
+    private GameFlagEnum(Integer type, String message) {
         this.type = type;
         this.message = message;
     }
 
     public static String getMsgByType(Integer type) {
-        for (RoleTypeEnum typeEnum : RoleTypeEnum.values()) {
+        for (GameModeEnum typeEnum : GameModeEnum.values()) {
             if (typeEnum.getType().equals(type)) {
                 return typeEnum.getMessage();
             }
@@ -45,4 +37,3 @@ public enum RoleTypeEnum {
         return null;
     }
 }
-

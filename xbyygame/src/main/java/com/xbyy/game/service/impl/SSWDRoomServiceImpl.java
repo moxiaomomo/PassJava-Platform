@@ -1,5 +1,6 @@
 package com.xbyy.game.service.impl;
 
+import com.xbyy.game.enums.GameStateEnum;
 import com.xbyy.game.mapper.SSWDRoomMapper;
 import com.xbyy.game.pojo.dto.RoomInfoToRedis;
 import com.xbyy.game.pojo.dto.SSWDRoomParam;
@@ -10,6 +11,7 @@ import com.xbyy.game.service.SSWDRoomService;
 import com.xbyy.game.service.SSWDWordService;
 import com.xbyy.game.utils.RedisGameUtils;
 import com.xbyy.game.utils.ResultBody;
+import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.yeauty.pojo.Session;
 
@@ -38,25 +40,40 @@ public class SSWDRoomServiceImpl extends BaseServiceImpl<SSWDRoomMapper, GameRoo
         // 据roomParamDto判断房间是否已经存在
 
         // 生成roomID
-        String roomId = idService.generateUUID("SSWD");
+        String roomId = idService.generateRoomID();
 
         // 往数据库插入一条房间记录
         sswdRoomMapper.createRoom(roomId, user.getId().toString(), roomParamDto.getPlayerNum());
 
         // 往缓存redis插入一条房间记录
+        RoomInfoToRedis roomInfo = new RoomInfoToRedis();
+        roomInfo.setRoomId(roomId);
+        roomInfo.setGameState(GameStateEnum.PREPARE);
+        redisGameUtils.setRoomInfoToRedis(roomInfo);
 
         // 返回结果
-        return null;
+        return ResultBody.ok().msg("创建成功").data(roomInfo);
     }
 
     @Override
-    public void joinRoom(String senderId, String roomId, Session session){
+    public ResultBody joinRoom(String senderId, String roomId, Session session) throws CloneNotSupportedException {
         // 尝试从redis中获取room信息
         RoomInfoToRedis roomInfo = redisGameUtils.getRoomInfoToRedis(roomId);
         // redis无room信息，则尝试从数据库获取room信息，并同步到redis中
+        if (roomInfo == null) {
+            GameRoom room = sswdRoomMapper.getRoom(roomId);
+            if (room == null) {
+                return ResultBody.failed().msg("No such room");
+            }
+            // 往缓存redis插入一条房间记录
+            RoomInfoToRedis cacheInfo = new RoomInfoToRedis(room);
+            cacheInfo.setGameState(GameStateEnum.PREPARE);
+            redisGameUtils.setRoomInfoToRedis(cacheInfo);
+        }
         // 从查询结果中获取房间成员、状态等信息
         // 符合加入条件，则更新redis中房间信息，并向所有人推送相关消息，并向自己返回房间关键信息
         // 不符合条件，返回错误码
+        return ResultBody.ok().msg("加入成功");
     }
 
     @Override

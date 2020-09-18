@@ -1,6 +1,7 @@
 package com.xbyy.game.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.xbyy.game.pojo.common.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,8 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
+// @NoArgsConstructor
+@TableName("sswd_word")
 public class SSWDWord extends BaseEntity {
 
     private static final long serialVersionUID=1L;

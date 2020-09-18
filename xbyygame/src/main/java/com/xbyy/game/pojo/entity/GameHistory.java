@@ -15,7 +15,7 @@ import java.util.Date;
  * @date 2020-09-10
  */
 @Data
-@TableName("tbl_gamehis")
+@TableName("sswd_his")
 public class GameHistory implements Serializable {
 
     private static final long serialVersionUID = -153782320286949290L;

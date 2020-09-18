@@ -9,7 +9,7 @@ public interface SSWDRoomService {
     // 此处User应该用common中user
     public ResultBody createRoom(SSWDRoomParam roomParamDto, User user);
 
-    public void joinRoom(String senderId, String roomId, Session session);
+    public ResultBody joinRoom(String senderId, String roomId, Session session) throws CloneNotSupportedException;
 
     public void exitRoom(Session curSession);
 

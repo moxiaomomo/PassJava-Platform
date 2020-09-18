@@ -17,7 +17,7 @@ public class CommonConst {
      */
     public final static String REDIS_PRE_ROOM = "sswd:room:";
     /**
-     * 房间前缀配置
+     * 房间player前缀配置
      */
     public final static String REDIS_PRE_ROOM_MEMBER = "sswd:roomMem:";
 

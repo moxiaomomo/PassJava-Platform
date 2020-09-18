@@ -1,10 +1,10 @@
 package com.xbyy.game.enums;
 
-public enum RoomTypeEnum {
-    SSWD(1, "谁是卧底"),
-    KBWD(2, "白板卧底"),
-    WZQ(3, "五子棋"),
-    ZSZQ(4, "桌式足球");
+public enum GameModeEnum {
+    SSWD(0, "谁是卧底"),
+    KBWD(1, "白板卧底"),
+    WZQ(2, "五子棋"),
+    ZSZQ(3, "桌式足球");
 
     private Integer type;
     private String message;
@@ -25,13 +25,13 @@ public enum RoomTypeEnum {
         this.message = message;
     }
 
-    private RoomTypeEnum(Integer type, String message) {
+    private GameModeEnum(Integer type, String message) {
         this.type = type;
         this.message = message;
     }
 
     public static String getMsgByType(Integer type) {
-        for (RoomTypeEnum typeEnum : RoomTypeEnum.values()) {
+        for (GameModeEnum typeEnum : GameModeEnum.values()) {
             if (typeEnum.getType().equals(type)) {
                 return typeEnum.getMessage();
             }
