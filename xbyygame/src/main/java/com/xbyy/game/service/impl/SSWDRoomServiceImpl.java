@@ -1,9 +1,11 @@
 package com.xbyy.game.service.impl;
 
 import com.xbyy.game.mapper.SSWDRoomMapper;
+import com.xbyy.game.pojo.dto.RoomInfoToRedis;
 import com.xbyy.game.pojo.dto.SSWDRoomParam;
 import com.xbyy.game.pojo.entity.GameRoom;
 import com.xbyy.game.pojo.entity.User;
+import com.xbyy.game.service.IDGenerateService;
 import com.xbyy.game.service.SSWDRoomService;
 import com.xbyy.game.service.SSWDWordService;
 import com.xbyy.game.utils.RedisGameUtils;
@@ -23,17 +25,26 @@ public class SSWDRoomServiceImpl extends BaseServiceImpl<SSWDRoomMapper, GameRoo
     private SSWDRoomMapper sswdRoomMapper;
 
     @Autowired
+    private SSWDWordService sswdWordService;
+
+    @Autowired
     private RedisGameUtils redisGameUtils;
 
     @Autowired
-    private SSWDWordService sswdWordService;
+    private IDGenerateService idService;
 
     @Override
     public ResultBody createRoom(SSWDRoomParam roomParamDto, User user){
         // 据roomParamDto判断房间是否已经存在
+
         // 生成roomID
+        String roomId = idService.generateUUID("SSWD");
+
         // 往数据库插入一条房间记录
+        sswdRoomMapper.createRoom(roomId, user.getId().toString(), roomParamDto.getPlayerNum());
+
         // 往缓存redis插入一条房间记录
+
         // 返回结果
         return null;
     }
@@ -41,6 +52,7 @@ public class SSWDRoomServiceImpl extends BaseServiceImpl<SSWDRoomMapper, GameRoo
     @Override
     public void joinRoom(String senderId, String roomId, Session session){
         // 尝试从redis中获取room信息
+        RoomInfoToRedis roomInfo = redisGameUtils.getRoomInfoToRedis(roomId);
         // redis无room信息，则尝试从数据库获取room信息，并同步到redis中
         // 从查询结果中获取房间成员、状态等信息
         // 符合加入条件，则更新redis中房间信息，并向所有人推送相关消息，并向自己返回房间关键信息

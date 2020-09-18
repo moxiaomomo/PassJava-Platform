@@ -44,7 +44,7 @@ public class RedisGameUtils {
     }
 
     /**
-     * 保存房间信息到redis -2:房间满了
+     * 保存房间信息到redis
      */
     public boolean setRoomInfoToRedis(RoomInfoToRedis roomInfoToRedis){
         return redisUtils.hmset(CommonConst.REDIS_PRE_ROOM + roomInfoToRedis.getRoomId(),
