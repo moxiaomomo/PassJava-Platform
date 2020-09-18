@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `sswd_room`;
 CREATE TABLE `sswd_room`  (
   `id` bigint(50) NOT NULL COMMENT '唯一id',
   `room_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '房间id',
-  `status` int(10) NULL DEFAULT NULL COMMENT '状态',
+  `status` int(10) NULL DEFAULT NULL COMMENT '状态 0-normal 1-closed 2-banned',
   `create_user` varchar(128) NULL DEFAULT NULL COMMENT '创建人',
   `update_user` varchar(128) NULL DEFAULT NULL COMMENT '更新人',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
