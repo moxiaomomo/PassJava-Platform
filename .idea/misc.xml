@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/passjava-content/pom.xml" />
         <option value="$PROJECT_DIR$/chat/pom.xml" />
+        <option value="$PROJECT_DIR$/xbyygame/pom.xml" />
       </list>
     </option>
   </component>
