@@ -6,19 +6,29 @@ import com.xbyy.game.utils.ResultBody;
 import org.yeauty.pojo.Session;
 
 public interface SSWDRoomService {
-    // 此处User应该用common中user
-    public ResultBody createRoom(SSWDRoomParam roomParamDto, User user);
+  // 此处User应该用common中user
+  public ResultBody createRoom(SSWDRoomParam roomParamDto, User user);
 
-    public ResultBody joinRoom(String senderId, String roomId, Session session) throws CloneNotSupportedException;
+  public ResultBody joinRoom(String senderId, String roomId, Session session)
+      throws CloneNotSupportedException;
 
-    public void exitRoom(Session curSession);
+  public void exitRoom(Session curSession);
 
-    public void notifyPlayerDesc(String senderId, String roomId, String position,
-                          String voteCount);
+  public void prepareGame();
 
-    public void startVote(String curPosition, String roomId, String votePosition);
+  public void startGame();
 
-    public void findNeedVotePlayer(String senderId, String roomId, String position);
+  public void startDesc();
 
-    public void findNeedDescPlayer(String senderId, String roomId, String position);
+  public void startVote();
+
+  public void endVote();
+
+  public void voteOne(String curPosition, String roomId, String votePosition);
+
+  public void endGame();
+
+  public void findNeedVotePlayer(String roomId);
+
+  public void findNeedDescPlayer(String roomId);
 }
