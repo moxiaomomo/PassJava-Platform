@@ -18,6 +18,7 @@ public class User implements Serializable {
     @TableId
     private Long id;
 
+    private String userID;
     //昵称
     private String username;
     //性别

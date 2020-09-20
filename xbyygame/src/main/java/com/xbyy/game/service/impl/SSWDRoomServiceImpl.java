@@ -12,8 +12,12 @@ import com.xbyy.game.service.SSWDWordService;
 import com.xbyy.game.utils.RedisGameUtils;
 import com.xbyy.game.utils.ResultBody;
 import javax.annotation.Resource;
+
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.yeauty.pojo.Session;
 
 /**
@@ -21,6 +25,9 @@ import org.yeauty.pojo.Session;
  * @author moguang
  * @date 2020-09-13
  */
+@Service
+@Transactional(rollbackFor = Exception.class)
+@Slf4j
 public class SSWDRoomServiceImpl
     extends BaseServiceImpl<SSWDRoomMapper, GameRoom>
     implements SSWDRoomService {
@@ -40,7 +47,7 @@ public class SSWDRoomServiceImpl
     String roomId = idService.generateRoomID();
 
     // 往数据库插入一条房间记录
-    sswdRoomMapper.createRoom(roomId, user.getId().toString(),
+    sswdRoomMapper.createRoom(roomId, user.getUserID(),
                               roomParamDto.getPlayerNum());
 
     // 往缓存redis插入一条房间记录
@@ -69,6 +76,7 @@ public class SSWDRoomServiceImpl
       cacheInfo.setGameState(GameStateEnum.PREPARE);
       redisGameUtils.setRoomInfoToRedis(cacheInfo);
     }
+
     // 从查询结果中获取房间成员、状态等信息
     // 符合加入条件，则更新redis中房间信息，并向所有人推送相关消息，并向自己返回房间关键信息
     // 不符合条件，返回错误码

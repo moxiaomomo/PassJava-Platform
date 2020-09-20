@@ -5,20 +5,20 @@ create database `xbyy_game` default character set utf8mb4;
 -- ----------------------------
 DROP TABLE IF EXISTS `sswd_room`;
 CREATE TABLE `sswd_room`  (
-  `id` bigint(50) NOT NULL COMMENT '唯一id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一id',
   `room_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '房间id',
-  `status` int(10) NULL DEFAULT NULL COMMENT '状态 0-normal 1-closed 2-banned',
+  `status` int(10) NULL DEFAULT 0 COMMENT '状态 0-normal 1-closed 2-banned',
   `create_user` varchar(128) NULL DEFAULT NULL COMMENT '创建人',
   `update_user` varchar(128) NULL DEFAULT NULL COMMENT '更新人',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `mode` int(10) NULL DEFAULT NULL COMMENT '游戏模式 0-谁是卧底 1-白板卧底',
-  `flag` int(10) NULL DEFAULT NULL COMMENT '房间flag 0-语音版 1-文字版',
-  `player_num` int(10) NULL DEFAULT NULL COMMENT '玩家人数',
-  `wd_num` int(11) NULL DEFAULT NULL COMMENT '卧底人数',
-  `viewer_num` int(11) NULL DEFAULT NULL COMMENT '观众人数',
-  `bb_rule` int(10) NULL DEFAULT NULL COMMENT '选择白板规则 0-随机 1-需要 2-不需要',
-  `select_word_rule` int(10) NULL DEFAULT NULL COMMENT '选择词汇规则 0-随机 1-自定义',
+  `mode` int(10) NULL DEFAULT 0 COMMENT '游戏模式 0-谁是卧底 1-白板卧底',
+  `flag` int(10) NULL DEFAULT 0 COMMENT '房间flag 0-语音版 1-文字版',
+  `player_num` int(10) NULL DEFAULT 6 COMMENT '玩家人数',
+  `wd_num` int(11) NULL DEFAULT 1 COMMENT '卧底人数',
+  `viewer_num` int(11) NULL DEFAULT 0 COMMENT '观众人数',
+  `bb_rule` int(10) NULL DEFAULT 0 COMMENT '选择白板规则 0-随机 1-需要 2-不需要',
+  `select_word_rule` int(10) NULL DEFAULT 0 COMMENT '选择词汇规则 0-随机 1-自定义',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 

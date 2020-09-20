@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class SSWDRoomParam {
+    // roomId
+    private String roomId;
+    // roomName
+    private String roomName;
     // 玩家人数
     private Integer playerNum;
     // 卧底人数
@@ -22,8 +26,6 @@ public class SSWDRoomParam {
     private Integer bbRule;
     // 选词规则
     private Integer wordGenRule;
-    // roomId
-    private String roomId;
     // 房间类型 0-语音版 1-文字版
     private Integer roomFlag;
     // 游戏模式 0-谁是卧底 1-白板卧底

@@ -1,16 +1,25 @@
 package com.xbyy.game.service.impl;
 
+import com.xbyy.game.service.IDGenerateService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-public class IDGenerateServiceImpl {
+@Service
+@Transactional(rollbackFor = Exception.class)
+@Slf4j
+public class IDGenerateServiceImpl implements IDGenerateService {
+    @Override
     public String generateUUID(String type) {
         // TODO implement logic
         return "unimplemented";
     }
 
-    // legth(roomID)=16
+    // length(roomID)=16
+    @Override
     public String generateRoomID() {
         Long dt = (new Date()).getTime();
         String pre8 = Long.toHexString(dt/1000).substring(0, 8);
